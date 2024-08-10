@@ -9,7 +9,7 @@ class ProjetosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $projetos = [
             'Projeto 1',
@@ -18,7 +18,8 @@ class ProjetosController extends Controller
         ];
 
 
-        return $projetos;
+        return view('projetos.index')
+            ->with('projetos', $projetos);
     }
 
     /**
