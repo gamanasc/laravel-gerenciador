@@ -12,6 +12,7 @@
     </title>
 </head>
 <body>
+    <h1>{{$title}}</h1>
     {{-- Conteúdo variável --}}
     {{ $slot }}
 </body>

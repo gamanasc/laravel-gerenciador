@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/projetos', [ProjetosController::class, 'index']);
+Route::get('/projetos/criar', [ProjetosController::class, 'create']);
