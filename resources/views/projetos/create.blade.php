@@ -1,10 +1,16 @@
 <x-layout title="Novo projeto">
 
-    <a href="/projetos">Cancelar</a>
 
     <form action="" method="post">
-        <input type="text" name="titulo" id="titulo">
-        <input type="text" name="descricao" id="descricao">
-        <input type="button" value="Enviar">
+        <label for="titulo" class="form-label">Título:</label>
+        <input type="text" class="form-control" name="titulo" id="titulo">
+
+        <label for="titulo" class="form-label">Descrição:</label>
+        <input type="text" class="form-control" name="descricao" id="descricao">
+
+        <input type="button" class="my-3 btn btn-primary" value="Enviar">
     </form>
+
+    <a href="/projetos" class="btn btn-link px-0">Cancelar</a>
+
 </x-layout>

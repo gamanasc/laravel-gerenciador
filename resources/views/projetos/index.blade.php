@@ -1,11 +1,11 @@
 {{-- Tag personalizada para referenciar o layout padrão, com o título "Projetos" --}}
 <x-layout title="Projetos">
 
-    <a href="/projetos/criar">Adicionar</a>
+    <a href="/projetos/criar" class="btn btn-primary my-4">Adicionar</a>
 
-    <ul>
+    <ul class="list-group">
         @foreach ($projetos as $projeto)
-            <li>{{$projeto}}</li>
+            <li class="list-group-item">{{$projeto}}</li>
         @endforeach
     </ul>
 
