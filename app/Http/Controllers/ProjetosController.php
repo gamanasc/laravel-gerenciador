@@ -64,6 +64,8 @@ class ProjetosController extends Controller
         // Busca do projeto do id enviado
         $projeto = Project::find($request->id);
 
+        dd($projeto->tasks());
+
         return view('projetos.edit')
             ->with('projeto', $projeto);
     }
