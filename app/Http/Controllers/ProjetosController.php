@@ -49,7 +49,7 @@ class ProjetosController extends Controller
      */
     public function show(Request $request)
     {
-        $projeto = Project::find($request->id);
+        $projeto = Project::with('tasks')->find($request->id);
 
         return view('projetos.show')
             ->with('projeto', $projeto);
@@ -62,8 +62,6 @@ class ProjetosController extends Controller
     {
         // Busca do projeto do id enviado
         $projeto = Project::find($request->id);
-
-        dd($projeto->tasks());
 
         return view('projetos.edit')
             ->with('projeto', $projeto);

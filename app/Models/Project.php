@@ -13,7 +13,7 @@ class Project extends Model
     protected $fillable = ['titulo', 'descricao'];
 
     public function tasks(){
-        return $this->hasMany(Project::class, 'id');
+        return $this->hasMany(Task::class, 'project_id');
     }
 
     // Escopo adicionado ao projeto, para os retornos vierem por padrão do mais recente pro mais antigo
