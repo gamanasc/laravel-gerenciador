@@ -39,7 +39,7 @@
                         Editar
                     </a>
 
-                    <form action="" method="post">
+                    <form action="{{ route('tarefas.destroy', $task->id) }}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-danger btn-sm">
                             Remover

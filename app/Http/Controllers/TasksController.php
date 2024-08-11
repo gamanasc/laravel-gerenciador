@@ -90,8 +90,22 @@ class TasksController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        // Busca do projeto do id enviado
+        $tarefa = Task::find($request->id);
+
+        if(is_null($tarefa)){
+            // Mensagem de erro sendo salva na sessão, no modelo flash, para ser apagada após a leitura
+            return to_route('projetos.show', $request->project_id)
+                ->with('mensagem.erro', "Houve um erro na remoção da tarefa");
+        }
+
+        // Remoção do projeto
+        Task::destroy($request->id);
+
+        // Mensagem de sucesso sendo salva na sessão, no modelo flash, para ser apagada após a leitura
+        return to_route('projetos.show', $tarefa->project_id)
+            ->with('mensagem.sucesso', "Tarefa \"{$tarefa->titulo}\" removida com sucesso");
     }
 }
