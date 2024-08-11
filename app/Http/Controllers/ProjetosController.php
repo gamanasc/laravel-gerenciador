@@ -12,7 +12,8 @@ class ProjetosController extends Controller
      */
     public function index(Request $request)
     {
-        $projetos = Project::all();
+        $projetos = Project::query()
+            ->orderBy('created_at', 'desc')->get();
 
         return view('projetos.index')
             ->with('projetos', $projetos);
