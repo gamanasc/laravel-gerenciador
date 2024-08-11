@@ -31,7 +31,7 @@
 
                 <span class="d-flex">
 
-                    <a href="" class="btn btn-dark btn-sm">
+                    <a href="{{ route('tarefas.show', $task->id) }}" class="btn btn-dark btn-sm">
                         Ver
                     </a>
 

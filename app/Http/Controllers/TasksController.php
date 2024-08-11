@@ -45,9 +45,17 @@ class TasksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $tarefa = Task::find($request->id);
+
+        $mensagemSucesso = session('mensagem.sucesso');
+        $mensagemErro = session('mensagem.erro');
+
+        return view('tarefas.show')
+            ->with('tarefa', $tarefa)
+            ->with('mensagemSucesso', $mensagemSucesso)
+            ->with('mensagemErro', $mensagemErro);
     }
 
     /**
