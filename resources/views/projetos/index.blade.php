@@ -9,6 +9,12 @@
     </div>
     @endisset
 
+    @isset($mensagemErro)
+    <div class="alert alert-danger">
+        {{ $mensagemErro }}
+    </div>
+    @endisset
+
     <ul class="list-group">
         @foreach ($projetos as $projeto)
             <li class="list-group-item d-flex justify-content-between align-items-center">
