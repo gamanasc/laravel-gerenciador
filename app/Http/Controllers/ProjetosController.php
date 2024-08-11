@@ -32,14 +32,7 @@ class ProjetosController extends Controller
      */
     public function store(Request $request)
     {
-        $titulo = $request->input('titulo');
-        $descricao = $request->input('descricao');
-
-        $projeto = new Project();
-        $projeto->titulo = $titulo;
-        $projeto->descricao = $descricao;
-        $projeto->save();
-
+        Project::create($request->all());
         return redirect('/projetos');
     }
 
