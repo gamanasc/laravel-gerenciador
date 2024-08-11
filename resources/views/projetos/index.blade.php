@@ -23,12 +23,23 @@
                     <small>{{$projeto->descricao}}</small>
                 </span>
 
-                <form action="{{ route('projetos.destroy', $projeto->id) }}" method="post">
-                    @csrf
-                    <button type="submit" class="btn btn-danger btn-sm">
-                        Remover
-                    </button>
-                </form>
+                <span class="d-flex">
+
+                    <a href="{{ route('projetos.show', $projeto->id) }}" class="btn btn-dark btn-sm">
+                        Ver
+                    </a>
+
+                    <a href="{{ route('projetos.edit', $projeto->id) }}" class="btn btn-primary btn-sm mx-1">
+                        Editar
+                    </a>
+
+                    <form action="{{ route('projetos.destroy', $projeto->id) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Remover
+                        </button>
+                    </form>
+                </span>
             </li>
         @endforeach
     </ul>

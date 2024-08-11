@@ -24,7 +24,9 @@ Route::controller(ProjetosController::class)->group(function () {
     // Nomes em inglês para utilizar o padrão do Laravel
     Route::get('/projetos', 'index')->name('projetos.index');
     Route::get('/projetos/criar', 'create')->name('projetos.create');
+    Route::get('/projetos/editar/{id}', 'edit')->name('projetos.edit')->whereNumber('id');
     Route::post('/projetos/salvar', 'store')->name('projetos.store');
     Route::post('/projetos/remover/{id}', 'destroy')->name('projetos.destroy')->whereNumber('id');
+    Route::post('/projetos/atualizar/{id}', 'update')->name('projetos.update')->whereNumber('id');
 });
 
