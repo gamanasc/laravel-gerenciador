@@ -1,7 +1,7 @@
 <x-layout title="Novo projeto">
 
 
-    <form action="/projetos/salvar" method="post">
+    <form action="{{ route('projetos.store') }}" method="post">
         @csrf <!-- Proteção contra cross site request forgery -->
         <label for="titulo" class="form-label">Título:</label>
         <input type="text" class="form-control" name="titulo" id="titulo">
@@ -12,6 +12,6 @@
         <input type="submit" class="my-3 btn btn-primary" value="Enviar">
     </form>
 
-    <a href="/projetos" class="btn btn-link px-0">Cancelar</a>
+    <a href="{{ route('projetos.index') }}" class="btn btn-link px-0">Cancelar</a>
 
 </x-layout>

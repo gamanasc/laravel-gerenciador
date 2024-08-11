@@ -15,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/projetos');
 });
 
-Route::get('/projetos', [ProjetosController::class, 'index']);
-Route::get('/projetos/criar', [ProjetosController::class, 'create']);
-Route::post('/projetos/salvar', [ProjetosController::class, 'store']);
+// Grupo de rotas para projetos
+Route::controller(ProjetosController::class)->group(function () {
+    // Rotas nomeadas, para evitar que alterações futuras na URL demandem atualização em todas as chamadas do projeto
+    // Nomes em inglês para utilizar o padrão do Laravel
+    Route::get('/projetos', 'index')->name('projetos.index');
+    Route::get('/projetos/criar', 'create')->name('projetos.create');
+    Route::post('/projetos/salvar', 'store')->name('projetos.store');
+});
+
