@@ -15,8 +15,11 @@ class ProjetosController extends Controller
         $projetos = Project::query()
             ->orderBy('created_at', 'desc')->get();
 
+        $mensagemSucesso = session('mensagem.sucesso');
+
         return view('projetos.index')
-            ->with('projetos', $projetos);
+            ->with('projetos', $projetos)
+            ->with('mensagemSucesso', $mensagemSucesso);
     }
 
     /**
@@ -34,6 +37,7 @@ class ProjetosController extends Controller
     {
         // Mass assignment do Eloquent, para salvar os dados no banco, baseado no atributo fillable, definido na Model
         Project::create($request->all());
+        session()->flash('mensagem.sucesso', 'Projeto adicionado com sucesso');
 
         return to_route('projetos.index');
     }
@@ -65,8 +69,12 @@ class ProjetosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        Project::destroy($request->id);
+        // Mensagem de retorno sendo salva na sessão, no modelo flash, para ser apagada após a leitura
+        session()->flash('mensagem.sucesso', 'Projeto removido com sucesso');
+
+        return to_route('projetos.index');
     }
 }

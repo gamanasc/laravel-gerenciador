@@ -25,5 +25,6 @@ Route::controller(ProjetosController::class)->group(function () {
     Route::get('/projetos', 'index')->name('projetos.index');
     Route::get('/projetos/criar', 'create')->name('projetos.create');
     Route::post('/projetos/salvar', 'store')->name('projetos.store');
+    Route::post('/projetos/remover/{id}', 'destroy')->name('projetos.destroy')->whereNumber('id');
 });
 
