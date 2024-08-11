@@ -13,12 +13,25 @@
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 </head>
 <body>
+    @auth
+    <div class="w-100 bg-light p-3 mb-3 d-flex justify-content-end">
+
+        <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-link">Sair</button>
+        </form>
+    </div>
+    @endauth
+
+    @guest
+    <div class="w-100 bg-light p-3 mb-3 d-flex justify-content-end">
+        <a href="{{ route('login') }}" class="text-dark">Entrar</a>
+    </div>
+    @endguest
+
     <div class="container">
         <h1>{!! $title !!}</h1>
 
-        <div class="w-100 bg-light p-3 my-3 d-flex justify-content-end">
-            <a href="{{ route('logout') }}" class="text-dark">Sair</a>
-        </div>
 
 
         {{-- Mensagem de erro, se houver --}}
