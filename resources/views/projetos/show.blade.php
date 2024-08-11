@@ -9,9 +9,45 @@
         <a href="{{ route('tarefas.create', $projeto->id) }}" class="btn btn-primary">Adicionar</a>
     </h3>
 
+    @isset($mensagemSucesso)
+    <div class="alert alert-success">
+        {{ $mensagemSucesso }}
+    </div>
+    @endisset
+
+    @isset($mensagemErro)
+    <div class="alert alert-danger">
+        {{ $mensagemErro }}
+    </div>
+    @endisset
+
     <ul class="list-group mb-3">
         @foreach ($projeto->tasks as $task)
-            <li class="list-group-item"> {{$task->titulo}} </li>
+            <li class="list-group-item  d-flex justify-content-between align-items-center">
+                <span>
+                    {{$task->titulo}} <br>
+                    <small>{{$task->descricao}}</small>
+                </span>
+
+                <span class="d-flex">
+
+                    <a href="" class="btn btn-dark btn-sm">
+                        Ver
+                    </a>
+
+                    <a href="{{ route('tarefas.edit', $task->id) }}" class="btn btn-primary btn-sm mx-1">
+                        Editar
+                    </a>
+
+                    <form action="" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Remover
+                        </button>
+                    </form>
+                </span>
+
+            </li>
         @endforeach
     </ul>
 

@@ -5,7 +5,7 @@
         :titulo="old('titulo')"
         :descricao="old('descricao')"
         :status="old('status')"
-        :dt_vencimento="old('dt_vencimento')"
+        :dtVencimento="old('dt_vencimento')"
         />
 
     <a href="{{ route('projetos.show', $projeto->id) }}" class="btn btn-link px-0">Cancelar</a>

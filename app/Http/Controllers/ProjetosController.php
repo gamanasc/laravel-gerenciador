@@ -51,8 +51,13 @@ class ProjetosController extends Controller
     {
         $projeto = Project::with('tasks')->find($request->id);
 
+        $mensagemSucesso = session('mensagem.sucesso');
+        $mensagemErro = session('mensagem.erro');
+
         return view('projetos.show')
-            ->with('projeto', $projeto);
+            ->with('projeto', $projeto)
+            ->with('mensagemSucesso', $mensagemSucesso)
+            ->with('mensagemErro', $mensagemErro);
     }
 
     /**

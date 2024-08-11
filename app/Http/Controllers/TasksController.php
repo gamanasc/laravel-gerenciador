@@ -53,17 +53,38 @@ class TasksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        //
+        // Busca da tarefa do id enviado
+        $tarefa = Task::find($request->id);
+
+        return view('tarefas.edit')
+            ->with('tarefa', $tarefa);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TarefaFormRequest $request, string $id)
     {
-        //
+        // Busca da tarefa do id enviado
+        $tarefa = Task::find($request->id);
+
+        if(is_null($tarefa)){
+            // Mensagem de erro sendo salva na sessão, no modelo flash, para ser apagada após a leitura
+            return to_route('projetos.show', $request->project_id)
+                ->with('mensagem.erro', "Houve um erro na atualização da tarefa");
+        }
+
+        // Mass assignment do Eloquent, para atualizar os dados no banco, baseado no atributo fillable, definido na Model
+        $tarefa->fill($request->all());
+        $tarefa->save();
+
+        return to_route('projetos.show', $tarefa->project_id)
+            ->with('mensagem.sucesso', "Tarefa \"{$tarefa->titulo}\" atualizada com sucesso");
+
+
+
     }
 
     /**

@@ -13,7 +13,7 @@
     <input @isset($status)value="{{ $status }}"@endisset type="text" class="form-control" name="status" id="status">
 
     <label for="dt_vencimento" class="form-label">Data de vencimento:</label>
-    <input @isset($dt_vencimento)value="{{ $dt_vencimento }}"@endisset type="date" class="form-control" name="dt_vencimento" id="dt_vencimento">
+    <input @isset($dtVencimento)value="{{ $dtVencimento }}"@endisset type="date" class="form-control" name="dt_vencimento" id="dt_vencimento">
 
     <input type="submit" class="my-3 btn btn-primary" value="Enviar">
 </form>
