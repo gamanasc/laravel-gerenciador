@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjetoFormRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class ProjetosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjetoFormRequest $request)
     {
         // Mass assignment do Eloquent, para salvar os dados no banco, baseado no atributo fillable, definido na Model
         $projeto = Project::create($request->all());
@@ -70,7 +71,7 @@ class ProjetosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProjetoFormRequest $request, string $id)
     {
         // Busca do projeto do id enviado
         $projeto = Project::find($request->id);
