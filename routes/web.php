@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProjetosController;
+use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +31,19 @@ Route::controller(ProjetosController::class)->group(function () {
     Route::post('/projetos/salvar', 'store')->name('projetos.store');
     Route::post('/projetos/remover/{id}', 'destroy')->name('projetos.destroy')->whereNumber('id');
     Route::post('/projetos/atualizar/{id}', 'update')->name('projetos.update')->whereNumber('id');
+});
+
+// Grupo de rotas para tarefas
+Route::controller(TasksController::class)->group(function () {
+    // Rotas nomeadas, para evitar que alterações futuras na URL demandem atualização em todas as chamadas da tarefa
+    // Nomes em inglês para utilizar o padrão do Laravel
+    Route::get('/tarefas', 'index')->name('tarefas.index');
+    Route::get('/tarefas/criar/{id}', 'create')->name('tarefas.create')->whereNumber('id');
+    Route::get('/tarefas/editar/{id}', 'edit')->name('tarefas.edit')->whereNumber('id');
+    Route::get('/tarefa/{id}', 'show')->name('tarefas.show')->whereNumber('id');
+
+    Route::post('/tarefas/salvar', 'store')->name('tarefas.store');
+    Route::post('/tarefas/remover/{id}', 'destroy')->name('tarefas.destroy')->whereNumber('id');
+    Route::post('/tarefas/atualizar/{id}', 'update')->name('tarefas.update')->whereNumber('id');
 });
 

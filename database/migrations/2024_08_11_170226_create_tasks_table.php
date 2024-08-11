@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('titulo', 200);
             $table->text('descricao');
             $table->string('status', 100);
-            $table->dateTime('dt_vencimento');
+            $table->date('dt_vencimento');
             $table->timestamps();
         });
     }

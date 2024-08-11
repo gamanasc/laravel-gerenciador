@@ -2,9 +2,13 @@
 <x-layout title="{{$projeto->titulo}}">
 
     <hr>
-    <p>{{$projeto->descricao}}</p>
+    <p class="mb-5">{{$projeto->descricao}}</p>
 
-    <h3 class="mb-3">Tarefas do projeto</h3>
+    <h3 class="mb-4 d-flex justify-content-between align-items-center">
+        <span>Tarefas do projeto</span>
+        <a href="{{ route('tarefas.create', $projeto->id) }}" class="btn btn-primary">Adicionar</a>
+    </h3>
+
     <ul class="list-group mb-3">
         @foreach ($projeto->tasks as $task)
             <li class="list-group-item"> {{$task->titulo}} </li>
