@@ -47,9 +47,12 @@ class ProjetosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $projeto = Project::find($request->id);
+
+        return view('projetos.show')
+            ->with('projeto', $projeto);
     }
 
     /**
