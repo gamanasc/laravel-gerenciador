@@ -16,10 +16,17 @@ class UsersController extends Controller
     public function store(Request $request){
 
         $dados = $request->except(['_token']);
+
+        $request->validate([
+            'name' => ['required'],
+            'email' => ['required'],
+            'password' => ['required', 'confirmed']
+        ]);
+
         $dados['password'] = Hash::make($dados['password']);
         $usuario = User::create($dados);
-        Auth::login($usuario);
 
+        Auth::login($usuario);
         return to_route('projetos.index');
 
     }

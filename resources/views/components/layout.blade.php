@@ -16,6 +16,10 @@
     <div class="container">
         <h1>{!! $title !!}</h1>
 
+        <div class="w-100 bg-light p-3 my-3 d-flex justify-content-end">
+            <a href="{{ route('logout') }}" class="text-dark">Sair</a>
+        </div>
+
 
         {{-- Mensagem de erro, se houver --}}
         @if ($errors->any())
