@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjetosController extends Controller
@@ -11,12 +12,7 @@ class ProjetosController extends Controller
      */
     public function index(Request $request)
     {
-        $projetos = [
-            'Projeto 1',
-            'Projeto 2',
-            'Projeto 3'
-        ];
-
+        $projetos = Project::all();
 
         return view('projetos.index')
             ->with('projetos', $projetos);
@@ -35,7 +31,15 @@ class ProjetosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $titulo = $request->input('titulo');
+        $descricao = $request->input('descricao');
+
+        $projeto = new Project();
+        $projeto->titulo = $titulo;
+        $projeto->descricao = $descricao;
+        $projeto->save();
+
+        return redirect('/projetos');
     }
 
     /**

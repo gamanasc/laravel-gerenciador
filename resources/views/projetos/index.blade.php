@@ -5,7 +5,10 @@
 
     <ul class="list-group">
         @foreach ($projetos as $projeto)
-            <li class="list-group-item">{{$projeto}}</li>
+            <li class="list-group-item">
+                {{$projeto->titulo}} <br>
+                <small>{{$projeto->descricao}}</small>
+            </li>
         @endforeach
     </ul>
 
