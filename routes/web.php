@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjetosController;
 use App\Http\Controllers\TasksController;
+use App\Http\Middleware\Autenticador;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('/projetos');
-});
+})->middleware(Autenticador::class);
 
 // Grupo de rotas para projetos
 Route::controller(ProjetosController::class)->group(function () {
@@ -37,7 +40,7 @@ Route::controller(ProjetosController::class)->group(function () {
 Route::controller(TasksController::class)->group(function () {
     // Rotas nomeadas, para evitar que alterações futuras na URL demandem atualização em todas as chamadas da tarefa
     // Nomes em inglês para utilizar o padrão do Laravel
-    Route::get('/tarefas', 'index')->name('tarefas.index');
+    // Route::get('/tarefas', 'index')->name('tarefas.index');
     Route::get('/tarefas/criar/{id}', 'create')->name('tarefas.create')->whereNumber('id');
     Route::get('/tarefas/editar/{id}', 'edit')->name('tarefas.edit')->whereNumber('id');
     Route::get('/tarefa/{id}', 'show')->name('tarefas.show')->whereNumber('id');
@@ -47,3 +50,8 @@ Route::controller(TasksController::class)->group(function () {
     Route::post('/tarefas/atualizar/{id}', 'update')->name('tarefas.update')->whereNumber('id');
 });
 
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'logar'])->name('logar');
+
+Route::get('/registrar', [UsersController::class, 'create'])->name('users.create');
+Route::post('/registrar', [UsersController::class, 'store'])->name('users.store');
