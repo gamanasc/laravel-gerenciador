@@ -13,8 +13,7 @@ class ProjetosController extends Controller
      */
     public function index(Request $request)
     {
-        $projetos = Project::query()
-            ->orderBy('created_at', 'desc')->get();
+        $projetos = Project::with(['tasks'])->get();
 
         $mensagemSucesso = session('mensagem.sucesso');
         $mensagemErro = session('mensagem.erro');
