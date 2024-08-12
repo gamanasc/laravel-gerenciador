@@ -11,8 +11,6 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjetosController;
 use App\Http\Controllers\TasksController;
 
@@ -95,14 +93,5 @@ Route::middleware('auth')->group(function () {
         Route::post('/tarefas/remover/{id}', 'destroy')->name('tarefas.destroy')->whereNumber('id');
         Route::post('/tarefas/atualizar/{id}', 'update')->name('tarefas.update')->whereNumber('id');
     });
-
-
-
-    // Route::get('/login', [LoginController::class, 'index'])->name('login');
-    // Route::post('/login', [LoginController::class, 'logar'])->name('logar');
-    // Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
-    // Route::get('/registrar', [UsersController::class, 'create'])->name('users.create');
-    // Route::post('/registrar', [UsersController::class, 'store'])->name('users.store');
 
 });
