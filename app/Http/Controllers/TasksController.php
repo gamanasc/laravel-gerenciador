@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TarefaFormRequest;
+use App\Mail\TaskUpdated;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Task;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class TasksController extends Controller
 {
@@ -87,6 +89,15 @@ class TasksController extends Controller
         // Mass assignment do Eloquent, para atualizar os dados no banco, baseado no atributo fillable, definido na Model
         $tarefa->fill($request->all());
         $tarefa->save();
+
+        //  Envio de e-mail
+        $usuarios = User::all();
+
+        foreach ($usuarios as $usuario) {
+            $email = new TaskUpdated('Tarefa 1');
+            Mail::to($usuario)->send($email);
+        }
+
 
         return to_route('projetos.show', $tarefa->project_id)
             ->with('mensagem.sucesso', "Tarefa \"{$tarefa->titulo}\" atualizada com sucesso");

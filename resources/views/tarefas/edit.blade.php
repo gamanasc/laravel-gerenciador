@@ -8,5 +8,5 @@
         dtVencimento="{{ $tarefa->dt_vencimento }}"
     />
 
-    <a href="{{ route('tarefas.index') }}" class="btn btn-link px-0">Cancelar</a>
+    <a href="{{ route('projetos.show', $tarefa->project_id) }}" class="btn btn-link px-0">Cancelar</a>
 </x-layout>

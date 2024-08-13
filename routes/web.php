@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Mail\TaskUpdated;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Teste de envio de e-mails
+Route::get('/email', function(){
+    return new TaskUpdated('Tarefa de teste');
+});
+
 
 require __DIR__.'/auth.php';
