@@ -95,7 +95,7 @@ class TasksController extends Controller
 
         foreach ($usuarios as $usuario) {
             $email = new TaskUpdated('Tarefa 1');
-            Mail::to($usuario)->send($email);
+            Mail::to($usuario)->queue($email);
         }
 
 
