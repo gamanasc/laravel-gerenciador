@@ -25,6 +25,23 @@
         @isset($tarefa->users)
             @foreach ($tarefa->users as $user)
 
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>
+                        {{$user->name}} <br>
+                        <small>{{$user->email}}</small>
+                    </span>
+
+                    <span class="d-flex">
+
+                        <form action="" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Remover
+                            </button>
+                        </form>
+                    </span>
+                </li>
             @endforeach
         @endisset
     </ul>
