@@ -10,6 +10,11 @@ class Project extends Model
 {
     use HasFactory;
 
+    // Para evitar erro de conversão de timestamps
+    public function getDateFormat(){
+        return 'Y-d-m H:i:s.v';
+    }
+
     protected $fillable = ['titulo', 'descricao'];
 
     public function tasks(){

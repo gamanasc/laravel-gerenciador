@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    // Para evitar erro de conversão de timestamps
+    public function getDateFormat(){
+        return 'Y-d-m H:i:s.v';
+    }
+
     /**
      * The attributes that are mass assignable.
      *
