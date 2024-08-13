@@ -53,6 +53,43 @@ class TasksController extends Controller
     }
 
     /**
+     * Método para mostrar a tela para vincular usuário à tarefa
+     */
+    public function create_user(Request $request)
+    {
+        $tarefa = Task::find($request->id);
+        $usuarios = User::doesntHave('tasks')->get();
+
+        $mensagemSucesso = session('mensagem.sucesso');
+        $mensagemErro = session('mensagem.erro');
+
+        return view('tarefas.create_user')
+            ->with('tarefa', $tarefa)
+            ->with('usuarios', $usuarios)
+            ->with('mensagemSucesso', $mensagemSucesso)
+            ->with('mensagemErro', $mensagemErro);
+    }
+
+    /**
+     * Método para mostrar a tela para vincular usuário à tarefa
+     */
+    public function store_user(Request $request)
+    {
+
+        $request->validate([
+            'user_id' => 'required|integer',
+            'task_id' => 'required|integer',
+        ]);
+
+        // Mass assignment do Eloquent, para salvar os dados no banco, baseado no atributo fillable, definido na Model
+        $usuario = User::find($request->user_id);
+        $usuario->tasks()->attach($request->task_id);
+        session()->flash('mensagem.sucesso', "Usuário vinculado com sucesso");
+
+        return to_route('tarefas.show', $request->task_id);
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(Request $request)

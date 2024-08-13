@@ -6,7 +6,7 @@
 
     <h3 class="mb-4 d-flex justify-content-between align-items-center">
         <span>Usuários vinculados à tarefa</span>
-        <a href="" class="btn btn-primary">Adicionar</a>
+        <a href="{{ route('tarefas.create_user', $tarefa->id) }}" class="btn btn-primary">Adicionar</a>
     </h3>
 
     @isset($mensagemSucesso)
