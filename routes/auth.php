@@ -85,6 +85,7 @@ Route::middleware('auth')->group(function () {
         // Rotas nomeadas, para evitar que alterações futuras na URL demandem atualização em todas as chamadas da tarefa
         // Nomes em inglês para utilizar o padrão do Laravel
         // Route::get('/tarefas', 'index')->name('tarefas.index');
+        Route::get('/tarefas/exportar', 'export')->name('tarefas.export');
         Route::get('/tarefas/criar/{id}', 'create')->name('tarefas.create')->whereNumber('id');
         Route::get('/tarefas/editar/{id}', 'edit')->name('tarefas.edit')->whereNumber('id');
         Route::get('/tarefa/{id}', 'show')->name('tarefas.show')->whereNumber('id');

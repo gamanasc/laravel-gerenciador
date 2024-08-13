@@ -21,6 +21,14 @@ class TasksController extends Controller
     }
 
     /**
+     * export
+     */
+    public function export()
+    {
+        dd('teste');
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
@@ -127,4 +135,6 @@ class TasksController extends Controller
         return to_route('projetos.show', $tarefa->project_id)
             ->with('mensagem.sucesso', "Tarefa \"{$tarefa->titulo}\" removida com sucesso");
     }
+
+
 }

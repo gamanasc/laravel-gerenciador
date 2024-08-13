@@ -9,6 +9,8 @@
         <a href="{{ route('tarefas.create', $projeto->id) }}" class="btn btn-primary">Adicionar</a>
     </h3>
 
+    <a href="{{ route('tarefas.export') }}" rel="noopener noreferrer">Exportar Planilha</a>
+
     @isset($mensagemSucesso)
     <div class="alert alert-success">
         {{ $mensagemSucesso }}
