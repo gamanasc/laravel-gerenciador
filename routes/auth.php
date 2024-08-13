@@ -93,6 +93,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/tarefas/usuario/{id}', 'create_user')->name('tarefas.create_user')->whereNumber('id');;
         Route::post('/tarefas/salvar_usuario', 'store_user')->name('tarefas.store_user');
+        Route::post('/tarefas/remover_usuario', 'destroy_user')->name('tarefas.destroy_user');
+
 
         Route::post('/tarefas/salvar', 'store')->name('tarefas.store');
         Route::post('/tarefas/remover/{id}', 'destroy')->name('tarefas.destroy')->whereNumber('id');

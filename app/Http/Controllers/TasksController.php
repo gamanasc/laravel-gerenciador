@@ -90,6 +90,25 @@ class TasksController extends Controller
     }
 
     /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy_user(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|integer',
+            'task_id' => 'required|integer',
+        ]);
+
+        $usuario = User::find($request->user_id);
+        // Remoção da relação
+        $usuario->tasks()->detach($request->task_id);
+
+        // Mensagem de sucesso sendo salva na sessão, no modelo flash, para ser apagada após a leitura
+        return to_route('tarefas.show', $request->task_id)
+            ->with('mensagem.sucesso', "Usuário desvinculado com sucesso");
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(Request $request)

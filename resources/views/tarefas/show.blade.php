@@ -34,7 +34,7 @@
 
                     <span class="d-flex">
 
-                        <form action="" method="post">
+                        <form action="{{ route('tarefas.destroy_user', ['task_id' => $tarefa->id, 'user_id' => $user->id]) }}" method="post">
                             @csrf
                             <button type="submit" class="btn btn-danger btn-sm">
                                 Remover
