@@ -38,7 +38,11 @@ class ProjetosController extends Controller
     public function store(ProjetoFormRequest $request)
     {
         // Mass assignment do Eloquent, para salvar os dados no banco, baseado no atributo fillable, definido na Model
-        $projeto = Project::create($request->all());
+        $projeto = Project::create([
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao,
+        ]);
+
         session()->flash('mensagem.sucesso', "Projeto \"{$projeto->titulo}\" adicionado com sucesso");
 
         return to_route('projetos.index');
