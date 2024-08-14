@@ -11,3 +11,11 @@ O projeto possui as seguintes funções:
 - Sistema de login, cadastro, alteração de perfil, recuperação e redefinição de senha, utilizando Laravel Breeze.
 - Exportação de relatório de tarefas, baseado no status (pendente, em progresso ou concluído)
 - Testes automatizados
+
+## Imagens do sistema
+
+### Projetos
+
+### Tarefas do projeto
+
+### Usuários vinculados à tarefa
