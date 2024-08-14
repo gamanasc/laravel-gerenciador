@@ -33,9 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Teste de envio de e-mails
-Route::get('/email', function(){
-    return new TaskUpdated('Tarefa de teste');
-});
+// // Teste de envio de e-mails
+// Route::get('/email', function(){
+//     return new TaskUpdated('Tarefa de teste');
+// });
 
 require __DIR__.'/auth.php';
