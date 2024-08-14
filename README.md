@@ -12,14 +12,6 @@ O projeto possui as seguintes funções:
 - Exportação de relatório de tarefas, baseado no status (pendente, em progresso ou concluído)
 - Testes automatizados
 
-## Variáveis de Ambiente
-
-Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
-
-`API_KEY`
-
-`ANOTHER_API_KEY`
-
 ## Imagens do sistema
 
 ### Projetos
