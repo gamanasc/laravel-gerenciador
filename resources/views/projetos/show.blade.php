@@ -12,7 +12,9 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+        <h3 class="mb-4">Descrição do projeto</h3>
         <p class="mb-5">{{$projeto->descricao}}</p>
+
 
             @isset($mensagemSucesso)
                 <div class="p-4 text-sm text-gray-800 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 mb-4"
