@@ -25,9 +25,10 @@ class TasksController extends Controller
     /**
      * export
      */
-    public function export()
+    public function export(Request $request)
     {
-        dd('teste');
+        $tarefas = Task::where('status', $request->status)->get();
+        dd($tarefas);
     }
 
     /**

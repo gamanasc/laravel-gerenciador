@@ -20,7 +20,15 @@
     <!-- Status -->
     <div class="mt-4">
         <x-input-label for="status" :value="__('Status')" />
-        <x-text-input id="status" class="block mt-1 w-full" type="text" name="status" value="{{$status}}" required autofocus autocomplete="status" />
+        {{-- <x-text-input id="status" class="block mt-1 w-full" type="text" name="status" value="{{$status}}" required autofocus autocomplete="status" /> --}}
+
+        <select class="w-100 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="status" name="status" autofocus required>
+            <option selected>[Selecione]</option>
+            <option value="Pendente">Pendentes</option>
+            <option value="Progresso">Em progresso</option>
+            <option value="Concluida">Concluídas</option>
+        </select>
+
         <x-input-error :messages="$errors->get('status')" class="mt-2" />
     </div>
 

@@ -89,7 +89,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/tarefas/editar/{id}', 'edit')->name('tarefas.edit')->whereNumber('id');
         Route::get('/tarefa/{id}', 'show')->name('tarefas.show')->whereNumber('id');
 
-        Route::get('/tarefas/exportar', 'export')->name('tarefas.export');
+        Route::post('/tarefas/exportar', 'export')->name('tarefas.export');
 
         Route::get('/tarefas/usuario/{id}', 'create_user')->name('tarefas.create_user')->whereNumber('id');;
         Route::post('/tarefas/salvar_usuario', 'store_user')->name('tarefas.store_user');

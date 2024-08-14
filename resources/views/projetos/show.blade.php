@@ -38,8 +38,6 @@
                 </a>
             </h3>
 
-            {{-- <a href="{{ route('tarefas.export') }}" rel="noopener noreferrer">Exportar Planilha</a> --}}
-
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                     <ul class="divide-y divide-gray-200 p-0 m-0">
