@@ -49,3 +49,5 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 ### Fila de notificações
 
 `QUEUE_CONNECTION` = `database`
+
+- [Questões técnicas](https://github.com/gamanasc/laravel-gerenciador/blob/master/questoes.pdf)
