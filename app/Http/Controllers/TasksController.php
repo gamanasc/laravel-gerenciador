@@ -48,7 +48,7 @@ class TasksController extends Controller
     {
         // Mass assignment do Eloquent, para salvar os dados no banco, baseado no atributo fillable, definido na Model
         $tarefa = Task::create($request->all());
-        session()->flash('mensagem.sucesso', "Projeto \"{$tarefa->titulo}\" adicionado com sucesso");
+        session()->flash('mensagem.sucesso', "Tarefa \"{$tarefa->titulo}\" adicionado com sucesso");
 
         return to_route('projetos.show', $tarefa->project_id);
     }
