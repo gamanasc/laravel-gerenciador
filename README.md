@@ -15,7 +15,10 @@ O projeto possui as seguintes funções:
 ## Imagens do sistema
 
 ### Projetos
+![Projetos](https://github.com/gamanasc/laravel-gerenciador/blob/master/public/img/projetos.png)
 
 ### Tarefas do projeto
+![Tarefas do projeto](https://github.com/gamanasc/laravel-gerenciador/blob/master/public/img/tarefas.png)
 
 ### Usuários vinculados à tarefa
+![Usuários vinculados à tarefa](https://github.com/gamanasc/laravel-gerenciador/blob/master/public/img/usuarios.png)
