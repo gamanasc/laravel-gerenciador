@@ -37,12 +37,15 @@
                     </x-primary-button>
                 </a>
             </h3>
-            {{-- <a href="{{ route('tarefas.export') }}" rel="noopener noreferrer">Exportar Planilha</a> --}}
 
+            {{-- <a href="{{ route('tarefas.export') }}" rel="noopener noreferrer">Exportar Planilha</a> --}}
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                     <ul class="divide-y divide-gray-200 p-0 m-0">
+
+                        @if(!$projeto->tasks->isEmpty())
+
                         @foreach ($projeto->tasks as $task)
                                 <li class="flex justify-between items-center p-4">
                                     <span class="text-sm">
@@ -76,6 +79,18 @@
 
 
                         @endforeach
+
+                        @else
+
+                        <li class="flex justify-between items-center p-4">
+                            <span class="text-sm">
+                                <span class="text-lg font-semibold text-gray-900 mb-4">Não há usuários vinculados à tarefa</span><br>
+                                <span class="text-sm text-gray-600">Clique em adicionar para vincular usuários.</span>
+                            </span>
+
+                        </li>
+
+                        @endif
                     </ul>
                 </div>
 
