@@ -1,11 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Novo projeto
+            Adicionar usuário à tarefa "{{ $tarefa->titulo }}"
         </h2>
     </x-slot>
-    {{-- <x-layout title="{{ $tarefa->titulo }}: Adicionar usuário à tarefa"> --}}
-
 
     <div class="py-12">
 
@@ -18,7 +16,7 @@
                     <input type="hidden" name="task_id" value="{{ $tarefa->id }}">
 
                     <label for="user" class="form-label">Usuário:</label>
-                    <select class="form-select" id="user" name="user_id" aria-label="Default select example"
+                    <select class="w-100 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="user" name="user_id" aria-label="Default select example"
                         autofocus required>
                         <option selected>[Selecione]</option>
                         @foreach ($usuarios as $usuario)
@@ -26,7 +24,12 @@
                         @endforeach
                     </select>
 
-                    <input type="submit" class="my-3 btn btn-primary" value="Enviar">
+                    <div class="flex items-center justify-end mt-4">
+
+                        <x-primary-button class="ms-4">
+                            Enviar
+                        </x-primary-button>
+                    </div>
                 </form>
             @else
                 <h5 class="my-5">Não há usuários disponíveis para essa tarefa no momento</h5>
