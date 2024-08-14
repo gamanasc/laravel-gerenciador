@@ -12,6 +12,14 @@ O projeto possui as seguintes funções:
 - Exportação de relatório de tarefas, baseado no status (pendente, em progresso ou concluído)
 - Testes automatizados
 
+## Variáveis de Ambiente
+
+Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+
+`API_KEY`
+
+`ANOTHER_API_KEY`
+
 ## Imagens do sistema
 
 ### Projetos
@@ -22,3 +30,30 @@ O projeto possui as seguintes funções:
 
 ### Usuários vinculados à tarefa
 ![Usuários vinculados à tarefa](https://github.com/gamanasc/laravel-gerenciador/blob/master/public/img/usuarios.png)
+
+
+## Variáveis de Ambiente
+
+Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+
+### Banco de dados SQL Server
+
+`DB_CONNECTION`
+`DB_HOST`
+`DB_PORT`
+`DB_DATABASE`
+`DB_USERNAME`
+`DB_PASSWORD`
+
+### SMTP (Mailtrap utilizado)
+
+`MAIL_MAILER`
+`MAIL_HOST`
+`MAIL_PORT`
+`MAIL_USERNAME`
+`MAIL_PASSWORD`
+`MAIL_ENCRYPTION`
+
+### Fila de notificações
+
+`QUEUE_CONNECTION` = `database`
