@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
+use App\Notifications\TaskUpdatedNotification;
 use Illuminate\Support\Facades\Mail;
 
 class TasksController extends Controller
@@ -154,12 +155,8 @@ class TasksController extends Controller
         $tarefa->fill($request->all());
         $tarefa->save();
 
-        //  Envio de e-mail
-        $usuarios = User::all();
-
-        foreach ($usuarios as $usuario) {
-            $email = new TaskUpdated('Tarefa 1');
-            Mail::to($usuario)->queue($email);
+        foreach ($tarefa->users as $user) {
+            $user->notify(new TaskUpdatedNotification($user, $tarefa));
         }
 
 

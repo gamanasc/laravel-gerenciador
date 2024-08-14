@@ -15,6 +15,8 @@
 
     </x-slot>
 
+
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @isset($mensagemSucesso)
@@ -24,7 +26,7 @@
             @endisset
 
             @isset($mensagemErro)
-            <div class="p-4 text-sm text-gray-800 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 mb-4">
+            <div class="p-4 text-sm text-red-500 rounded-lg bg-red-50 dark:bg-red-800 dark:text-red-300 mb-4">
                 <span class="font-medium">{{ $mensagemErro }}</span>
             </div>
             @endisset

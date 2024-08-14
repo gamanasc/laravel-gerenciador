@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Mail\TaskUpdated;
+use App\Models\Task;
+use App\Models\User;
+use App\Notifications\TaskUpdatedNotification;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +37,5 @@ Route::middleware('auth')->group(function () {
 Route::get('/email', function(){
     return new TaskUpdated('Tarefa de teste');
 });
-
 
 require __DIR__.'/auth.php';
