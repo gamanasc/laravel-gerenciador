@@ -50,7 +50,7 @@
                                 <li class="flex justify-between items-center p-4">
                                     <span class="text-sm">
                                         <span class="text-lg font-semibold text-gray-900">{{ $task->titulo }}</span><br>
-                                        <small class="text-gray-600">{{ $task->descricao }}</small>
+                                        <span class="text-sm text-gray-600">{{ $task->descricao }}</span>
                                     </span>
 
                                     <span class="flex space-x-2">

@@ -39,10 +39,10 @@
                             <li class="flex justify-between items-center p-4">
                                 <span class="text-sm">
                                     <span class="text-lg font-semibold text-gray-900">{{ $projeto->titulo }}</span><br>
-                                    <small class="text-gray-600">{{ $projeto->descricao }}</small>
+                                    <span class="text-sm text-gray-600">{{ $projeto->descricao }}</span>
                                 </span>
 
-                                <span class="flex space-x-2">
+                                <span class="flex flex-wrap space-x-2">
 
                                     <a href="{{ route('projetos.show', $projeto->id) }}">
                                         <x-secondary-button class="mx-1">

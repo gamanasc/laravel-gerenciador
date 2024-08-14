@@ -59,7 +59,7 @@
                                     <li class="flex justify-between items-center p-4">
                                         <span class="text-sm">
                                             <span class="text-lg font-semibold text-gray-900">{{ $user->name }}</span><br>
-                                            <small class="text-gray-600">{{ $user->email }}</small>
+                                            <span class="text-sm text-gray-600">{{ $user->email }}</span>
                                         </span>
 
                                         <span class="flex space-x-2">
