@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
+use App\Notifications\TaskAssignedNotification;
 use App\Notifications\TaskUpdatedNotification;
 use Illuminate\Support\Facades\Mail;
 
@@ -85,6 +86,10 @@ class TasksController extends Controller
         // Mass assignment do Eloquent, para salvar os dados no banco, baseado no atributo fillable, definido na Model
         $usuario = User::find($request->user_id);
         $usuario->tasks()->attach($request->task_id);
+
+        // Notificação por e-mail
+        $tarefa = Task::find($request->task_id);
+        $usuario->notify(new TaskAssignedNotification($usuario, $tarefa));
         session()->flash('mensagem.sucesso', "Usuário vinculado com sucesso");
 
         return to_route('tarefas.show', $request->task_id);
