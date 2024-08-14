@@ -1,59 +1,94 @@
-{{-- Tag personalizada para referenciar o layout padrão, com o título "Projetos" --}}
-<x-layout title="{{$projeto->titulo}}">
+<x-app-layout>
+    <x-slot name="header">
 
-    <hr>
-    <p class="mb-5">{{$projeto->descricao}}</p>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{$projeto->titulo}}
+        </h2>
 
-    <h3 class="mb-4 d-flex justify-content-between align-items-center">
-        <span>Tarefas do projeto</span>
-        <a href="{{ route('tarefas.create', $projeto->id) }}" class="btn btn-primary">Adicionar</a>
-    </h3>
+    </x-slot>
 
-    <a href="{{ route('tarefas.export') }}" rel="noopener noreferrer">Exportar Planilha</a>
 
-    @isset($mensagemSucesso)
-    <div class="alert alert-success">
-        {{ $mensagemSucesso }}
+    <div class="py-12">
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+        <p class="mb-5">{{$projeto->descricao}}</p>
+
+            @isset($mensagemSucesso)
+                <div class="p-4 text-sm text-gray-800 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 mb-4"
+                    role="alert">
+                    <span class="font-medium">{{ $mensagemSucesso }}</span>
+                </div>
+            @endisset
+
+            @isset($mensagemErro)
+                <div class="p-4 text-sm text-red-500 rounded-lg bg-red-50 dark:bg-red-800 dark:text-red-300 mb-4">
+                    <span class="font-medium">{{ $mensagemErro }}</span>
+                </div>
+            @endisset
+
+            <h3 class="mb-4 d-flex justify-content-between align-items-center">
+                <span>Tarefas do projeto</span>
+                <a href="{{ route('tarefas.create', $projeto->id) }}" >
+                    <x-primary-button class="mx-1">
+                        {{ __('Adicionar') }}
+                    </x-primary-button>
+                </a>
+            </h3>
+            {{-- <a href="{{ route('tarefas.export') }}" rel="noopener noreferrer">Exportar Planilha</a> --}}
+
+
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                    <ul class="divide-y divide-gray-200 p-0 m-0">
+                        @foreach ($projeto->tasks as $task)
+                                <li class="flex justify-between items-center p-4">
+                                    <span class="text-sm">
+                                        <span class="text-lg font-semibold text-gray-900">{{ $task->titulo }}</span><br>
+                                        <small class="text-gray-600">{{ $task->descricao }}</small>
+                                    </span>
+
+                                    <span class="flex space-x-2">
+
+                                        <a href="{{ route('tarefas.show', $task->id) }}">
+                                            <x-secondary-button class="mx-1">
+                                                {{ __('Ver') }}
+                                            </x-secondary-button>
+                                        </a>
+
+                                        <a href="{{ route('tarefas.edit', $task->id) }}">
+                                            <x-primary-button class="mx-1">
+                                                {{ __('Editar') }}
+                                            </x-primary-button>
+                                        </a>
+
+                                        <form action="{{ route('tarefas.destroy', $task->id) }}" method="post">
+                                            @csrf
+
+                                            <x-danger-button class="mx-1">
+                                                {{ __('Remover') }}
+                                            </x-danger-button>
+                                        </form>
+                                    </span>
+                                </li>
+
+
+                        @endforeach
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <a href="{{ route('projetos.index') }}">
+                <x-secondary-button class="mx-1 my-4">
+                    {{ __('Voltar') }}
+                </x-secondary-button>
+            </a>
+
+        </div>
+
     </div>
-    @endisset
-
-    @isset($mensagemErro)
-    <div class="alert alert-danger">
-        {{ $mensagemErro }}
-    </div>
-    @endisset
-
-    <ul class="list-group mb-3">
-        @foreach ($projeto->tasks as $task)
-            <li class="list-group-item  d-flex justify-content-between align-items-center">
-                <span>
-                    {{$task->titulo}} <br>
-                    <small>{{$task->descricao}}</small>
-                </span>
-
-                <span class="d-flex">
-
-                    <a href="{{ route('tarefas.show', $task->id) }}" class="btn btn-dark btn-sm">
-                        Ver
-                    </a>
-
-                    <a href="{{ route('tarefas.edit', $task->id) }}" class="btn btn-primary btn-sm mx-1">
-                        Editar
-                    </a>
-
-                    <form action="{{ route('tarefas.destroy', $task->id) }}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-sm">
-                            Remover
-                        </button>
-                    </form>
-                </span>
-
-            </li>
-        @endforeach
-    </ul>
 
 
-    <a href="{{ route('projetos.index') }}" class="btn btn-link px-0">Voltar</a>
-
-</x-layout>
+</x-app-layout>
