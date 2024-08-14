@@ -18,7 +18,7 @@ class Task extends Model
     protected $fillable = ['project_id', 'titulo', 'descricao', 'status', 'dt_vencimento'];
 
     public function project(){
-        return $this->belongTo(Project::class);
+        return $this->belongsTo(Project::class);
     }
 
     /**

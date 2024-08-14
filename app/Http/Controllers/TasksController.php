@@ -11,6 +11,8 @@ use App\Models\User;
 use App\Notifications\TaskAssignedNotification;
 use App\Notifications\TaskUpdatedNotification;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use PhpParser\Node\Stmt\Foreach_;
 
 class TasksController extends Controller
 {
@@ -28,7 +30,40 @@ class TasksController extends Controller
     public function export(Request $request)
     {
         $tarefas = Task::where('status', $request->status)->get();
-        dd($tarefas);
+
+        // Criar arquivo
+        $csv = tempnam(sys_get_temp_dir(), 'csv_' . Str::ulid());
+
+        $open_file = fopen($csv, 'w');
+
+        $header = ['ID da tarefa', 'Projeto', 'Tarefa', mb_convert_encoding('Descrição', 'ISO-8859-1', 'UTF-8'), 'Status'];
+
+        fputcsv($open_file, $header, ';');
+        if(count($tarefas) > 0){
+            foreach ($tarefas as $tarefa) {
+                $tarefas_array = [
+                    'id' => $tarefa->id,
+                    'projeto' => mb_convert_encoding($tarefa->project->titulo, 'ISO-8859-1', 'UTF-8'),
+                    'titulo' => mb_convert_encoding($tarefa->titulo, 'ISO-8859-1', 'UTF-8'),
+                    'descricao' => mb_convert_encoding($tarefa->descricao, 'ISO-8859-1', 'UTF-8'),
+                    'status' => mb_convert_encoding($tarefa->status, 'ISO-8859-1', 'UTF-8')
+                ];
+            }
+        }else{
+            $tarefas_array = [
+                'id' => 'Não há resultados para a busca',
+                '' => '',
+                '' => '',
+                '' => '',
+            ];
+        }
+
+        fputcsv($open_file, $tarefas_array, ';');
+
+        fclose($open_file);
+
+        return response()->download($csv, 'planilha_tarefas' . Str::ulid() . '.csv');
+
     }
 
     /**

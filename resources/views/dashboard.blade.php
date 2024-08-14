@@ -19,17 +19,11 @@
 
                     <label for="status" class="form-label me-4">Status:</label>
                     <select class="w-100 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="status" name="status" autofocus required>
-                        <option selected>[Selecione]</option>
+                        <option value="" selected>[Selecione]</option>
                         <option value="Pendente">Pendentes</option>
-                        <option value="Progresso">Em progresso</option>
-                        <option value="Concluida">Concluídas</option>
+                        <option value="Em Progresso">Em progresso</option>
+                        <option value="Concluída">Concluídas</option>
                     </select>
-                    {{-- <select class="w-100 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="status" name="status" autofocus required>
-                        <option selected>[Selecione]</option>
-                        @foreach ($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}">{{ $usuario->name }} - {{ $usuario->email }}</option>
-                        @endforeach
-                    </select> --}}
 
                     <div class="flex items-center justify-end">
 
